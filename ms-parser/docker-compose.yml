@@ -1,0 +1,15 @@
+version: "3.1"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: "uvicorn app.main:app --host 0.0.0.0 --reload --port 8001"
+    env_file:
+      - .env
+    volumes:
+      - ./:/auth
+    ports:
+      - '8001:8001'
+
